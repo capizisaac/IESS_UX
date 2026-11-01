@@ -1,13 +1,16 @@
 :root {
-    --primary-color: #5b21b6; /* Morado institucional moderno */
-    --primary-hover: #4c1d95;
-    --bg-color: #f3f4f6;
+    --primary-color: #0076a8;       /* Azul institucional IESS */
+    --primary-hover: #005f86;       
+    --accent-yellow: #f59e0b;       /* Amarillo/Ámbar minimalista para botones de acción */
+    --accent-hover: #d97706;
+    --bg-color: #f8fafc;            /* Fondo gris muy claro y neutro */
     --card-bg: #ffffff;
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --success-bg: #d1fae5;
-    --success-text: #065f46;
-    --error-color: #dc2626;
+    --text-main: #0f172a;           /* Texto principal de alto contraste */
+    --text-muted: #64748b;          /* Texto secundario suave */
+    --border-color: #e2e8f0;        /* Bordes sutiles y limpios */
+    --success-bg: #ecfdf5;
+    --success-text: #047857;
+    --error-color: #ef4444;
 }
 
 * {
@@ -25,130 +28,140 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
+/* Header Minimalista */
 .header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 2rem;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    padding: 1.25rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header h1 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 .subtitle {
     font-weight: 400;
-    font-size: 0.9rem;
-    opacity: 0.85;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 .user-badge {
-    font-size: 0.85rem;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    font-size: 0.8rem;
+    background: var(--bg-color);
+    color: var(--text-muted);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
 }
 
 /* Main Container */
 .main-container {
     flex: 1;
-    max-width: 600px;
+    max-width: 540px;
     width: 100%;
-    margin: 2rem auto;
+    margin: 3rem auto;
     padding: 0 1rem;
 }
 
-/* Cards */
+/* Tarjetas Minimalistas (Sin sombras pesadas, bordes limpios) */
 .card {
     background-color: var(--card-bg);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
     margin-bottom: 1.5rem;
 }
 
 .search-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    color: var(--text-main);
 }
 
 .instruction {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
 /* Form Elements */
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--text-main);
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.2s;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: all 0.2s ease;
 }
 
 input[type="text"]:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(91, 33, 182, 0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(0, 118, 168, 0.08);
 }
 
 .error-msg {
     color: var(--error-color);
-    font-size: 0.8rem;
-    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
     display: block;
 }
 
+/* Botón Minimalista (Inspirado en el amarillo del IESS pero limpio) */
 .btn-primary {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--accent-yellow);
+    color: #ffffff;
     border: none;
     width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
+    padding: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--accent-hover);
 }
 
-/* Spinner de Carga */
+/* Spinner de Carga Minimalista */
 .spinner-container {
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--primary-color);
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--primary-color);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 0.8s linear infinite;
-    margin: 0 auto 0.8rem auto;
+    width: 32px;
+    height: 32px;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 0.75rem auto;
 }
 
 @keyframes spin {
@@ -158,15 +171,16 @@ input[type="text"]:focus {
 
 /* Resultados */
 .result-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-main);
 }
 
 .result-box {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
-    padding: 1.2rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 1.25rem;
     border-radius: 8px;
 }
 
@@ -174,22 +188,23 @@ input[type="text"]:focus {
     display: inline-block;
     background-color: var(--success-bg);
     color: var(--success-text);
-    padding: 0.3rem 0.8rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
 }
 
 .result-box p {
     margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .tip {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.8rem;
+    margin-top: 1rem;
+    line-height: 1.4;
 }
 
 /* Utilidades */
@@ -197,12 +212,12 @@ input[type="text"]:focus {
     display: none;
 }
 
-/* Footer */
+/* Footer Minimalista */
 .footer {
     text-align: center;
     padding: 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    background-color: #ffffff;
-    border-top: 1px solid #e5e7eb;
+    background-color: transparent;
+    border-top: 1px solid var(--border-color);
 }
