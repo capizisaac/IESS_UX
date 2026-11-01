@@ -1,6 +1,6 @@
 # 🏛️ Rediseño y Optimización UX - Portal de Consultas del IESS
 
-Repositorio oficial del prototipo funcional y entregable de la fase de investigación, auditoría y desarrollo de experiencia de usuario (UX) para el portal de consultas del Instituto Ecuatoriano de Seguridad Social (**IESS**), desarrollado en el marco de la materia **Ingeniería de Software 2**.
+Repositorio oficial del prototipo funcional de la fase de investigación, auditoría y desarrollo de experiencia de usuario (UX) para el portal de consultas del Instituto Ecuatoriano de Seguridad Social (**IESS**).
 
 ---
 
