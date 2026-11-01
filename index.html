@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Consultas Optimizado - IESS UX</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts para tipografía moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Institucional Limpio -->
+    <header class="header">
+        <div class="logo-container">
+            <h1>IESS <span class="subtitle">Consulta Rápida de Solicitudes</span></h1>
+        </div>
+        <div class="user-badge" id="userBadge">Modo Invitado / Sesión Local</div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <main class="main-container">
+        
+        <!-- Tarjeta de Búsqueda Optimizada -->
+        <section class="card search-card">
+            <h2>Consultar Estado de Trámite</h2>
+            <p class="instruction">Ingrese su número de cédula para buscar solicitudes recientes guardadas en su dispositivo.</p>
+            
+            <form id="consultaForm">
+                <div class="form-group">
+                    <label for="cedula">Número de Cédula (10 dígitos):</label>
+                    <input type="text" id="cedula" maxlength="10" placeholder="Ej. 0912345678" required>
+                    <span id="inputError" class="error-msg"></span>
+                </div>
+                
+                <button type="submit" id="btnConsultar" class="btn-primary">Consultar Solicitud</button>
+            </form>
+        </section>
+
+        <!-- Indicador de Carga en Segundo Plano (Spinner simulado) -->
+        <div id="loadingSpinner" class="spinner-container hidden">
+            <div class="spinner"></div>
+            <p>Procesando consulta en segundo plano...</p>
+        </div>
+
+        <!-- Sección de Resultados (Feedback Visual Claro) -->
+        <section id="resultSection" class="card result-card hidden">
+            <h3>Resultado de la Solicitud</h3>
+            <div class="result-box" id="resultBox">
+                <!-- Se llena dinámicamente con JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Entorno de Pruebas UX - Ingeniería de Software 2 | Rediseño Portal IESS</p>
+    </footer>
+
+    <!-- Script de lógica y almacenamiento local -->
+    <script>
+        const form = document.getElementById('consultaForm');
+        const cedulaInput = document.getElementById('cedula');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const resultSection = document.getElementById('resultSection');
+        const resultBox = document.getElementById('resultBox');
+        const userBadge = document.getElementById('userBadge');
+
+        // Cargar cédula previa guardada en localStorage (Mejora de Cookies/Storage)
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedCedula = localStorage.getItem('iess_last_cedula');
+            if (savedCedula) {
+                cedulaInput.value = savedCedula;
+                userBadge.textContent = `Sesión recordada (Cédula: ${savedCedula})`;
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const cedula = cedulaInput.value.trim();
+
+            // Validación básica
+            if (cedula.length !== 10) {
+                document.getElementById('inputError').textContent = 'Por favor ingrese una cédula válida de 10 dígitos.';
+                return;
+            } else {
+                document.getElementById('inputError').textContent = '';
+            }
+
+            // Guardar en localStorage para evitar reingresar datos (Mejora Heurística 6)
+            localStorage.setItem('iess_last_cedula', cedula);
+            userBadge.textContent = `Usuario activo (${cedula})`;
+
+            // Mostrar estado de carga (Mejora Heurística 1: Feedback y segundo plano)
+            loadingSpinner.classList.remove('hidden');
+            resultSection.classList.add('hidden');
+
+            // Simular petición asíncrona en segundo plano (2 segundos)
+            setTimeout(() => {
+                loadingSpinner.classList.add('hidden');
+                resultSection.classList.remove('hidden');
+
+                // Renderizar resultado amigable
+                resultBox.innerHTML = `
+                    <div class="status-badge success">Aprobado / Vigente</div>
+                    <p><strong>Cédula consultada:</strong> ${cedula}</p>
+                    <p><strong>Tipo de Trámite:</strong> Solicitud de Afiliación Voluntaria</p>
+                    <p><strong>Fecha de registro:</strong> 28/10/2026</p>
+                    <p class="tip"><em>Su trámite se encuentra procesado con éxito. No requiere acciones adicionales.</em></p>
+                `;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
